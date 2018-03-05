@@ -31,7 +31,7 @@ io.on('connection', (socket) => {
 	console.log(`A new cliented connected. socket.id=${socket.id}`);
 	socket.emit('WELCOME_MESSAGE', {
 		id: socket.id,
-		contents: 'Entered the chat room!'
+		contents: 'Welcome to the chat room!'
 	});
 
     socket.on('disconnect', () => {

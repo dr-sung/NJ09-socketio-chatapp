@@ -9,7 +9,7 @@ socket.on('disconnect', function() {
 });
 
 socket.on('WELCOME_MESSAGE', function(msg) {
-    const h = document.createElement("H4"); // <H3> tag
+    const h = document.createElement("H4"); // <H4> tag
     const welcome = document.createTextNode(
         `${msg.contents} (socket id: ${msg.id} )`
     );
