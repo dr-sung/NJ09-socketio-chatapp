@@ -28,10 +28,14 @@ app.post('/chat', (req, res) => {
 })
 
 io.on('connection', (socket) => {
-    console.log('New USER connected');
+	console.log(`A new cliented connected. socket.id=${socket.id}`);
+	socket.emit('WELCOME_MESSAGE', {
+		id: socket.id,
+		contents: 'Entered the chat room!'
+	});
 
     socket.on('disconnect', () => {
-        console.log('USER disconnected');
+        console.log(`Client disconnected. socket.id=${socket.id}`);
     })
 
     // listening to 'post_message' when client posts a new message

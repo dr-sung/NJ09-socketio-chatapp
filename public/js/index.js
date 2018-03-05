@@ -8,12 +8,20 @@ socket.on('disconnect', function() {
     console.log('Disconnected from SERVER')
 });
 
+socket.on('WELCOME_MESSAGE', function(msg) {
+    const h = document.createElement("H4"); // <H3> tag
+    const welcome = document.createTextNode(
+        `${msg.contents} (socket id: ${msg.id} )`
+    );
+    h.appendChild(welcome);
+    document.getElementById("welcome-message").appendChild(h);
+});
+
 // listening to BROADCAST_MESSAGE event from server
 socket.on('RECEIVE_MESSAGE', function(msg) {
-    //console.log('received from server', msg);
     const li = document.createElement("LI"); // <LI> tag
     const chat = document.createTextNode(
-        `${msg.from}: ${msg.contents} (at: ${msg.timestamp})`
+        `${msg.from}: ${msg.contents} (post-time: ${msg.timestamp})`
     );
     li.appendChild(chat);
     document.getElementById("chat-window").appendChild(li);
